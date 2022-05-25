@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en"> 
+<head>
+    <title>{{blog_post.title}}</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{blog_post.author}}">    
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-1.css' %}">
+    
+
+</head> 
+
+<body>
+    
+    {% include 'snippets/header.html' %}
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">{{blog_post.title}}</h2>
+				    <div class="meta mb-3"><span class="date">Published at {{blog_post.date_published}} by {{blog_post.author.first_name}} {{blog_post.author.last_name}}</div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				    <figure class="blog-banner">
+				        {% if blog_post.header_image %}
+						<img class="img-fluid" width="640" height="480" src="{{blog_post.header_image.url}}" alt="image">
+						{% endif %}
+						{% if blog_post.video %}
+						<video width="360" height="320" controls="controls">
+							<source src="{{blog_post.video.url}}" type="video/mp4" />
+							Your browser does not support the video tag.
+						</video>
+					{% endif %}
+				    </figure>
+
+					<p>{{blog_post.body|safe}}</p>
+
+			    </div>
+				    
+		    </div><!--//container-->
+	    </article>
+	    
+
+    </div><!--//main-wrapper-->
+    
+
+       
+    <!-- Javascript -->          
+    <script src="{% static 'assets/plugins/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/popper.min.js' %}"></script> 
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets/js/blog.js' %}"></script>
+    
+
+</body>
+</html> 
+

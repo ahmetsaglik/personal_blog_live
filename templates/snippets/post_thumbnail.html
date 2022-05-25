@@ -1,0 +1,13 @@
+{% load static %}
+
+<div class="item mb-5">
+    <div class="media">
+        <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{post.header_image.url}}" alt="image">
+        <div class="media-body">
+            <h3 class="title mb-1"><a href="{% url 'detail-post' post.slug %}">{{ post.title }}</a></h3>
+            <div class="meta mb-1"><span class="date">Published in {{post.date_published}}</span> by {{post.author.first_name}} {{post.author.last_name}} </div>
+            <div class="intro">{{post.body|truncatechars:180|safe}}</div>
+            <a class="more-link" href="{% url 'detail-post' post.slug %}">Read more &rarr;</a>
+        </div><!--//media-body-->
+    </div><!--//media-->
+</div><!--//item-->

@@ -1,0 +1,89 @@
+{% load static %}
+
+<title>{{category_name}}</title>
+
+
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-1.css' %}">
+
+
+<style type="text/css">
+  @media (max-width: 768px) {
+    .right-column {
+      margin-left: 0px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .right-column {
+      margin-left: 20px;
+    }
+  }
+
+  .blog-post-container {
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .create-post-bar {
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+  }
+
+  .left-column {
+    padding: 0px;
+  }
+
+  .right-column {
+    padding: 0px;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+
+    {% include 'snippets/header.html' %}
+
+    <!-- Blog Feed -->
+    <div class="main-wrapper">
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container h100">
+			    
+			    {% for post in posts %}
+					{% include 'snippets/post_thumbnail.html' with post=post %}
+				{% endfor %}
+			    
+			    
+			    <!-- Pagination -->
+				{% include 'snippets/blog_post_pagination.html' with posts=posts %}
+				
+		    </div>
+	    </section>
+	    
+    </div><!--//main-wrapper-->
+    <!-- End Blog Feed -->
+
+
+  </div>
+</div>
+
+    <!-- Javascript -->          
+    <script src="{% static 'assets/plugins/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/popper.min.js' %}"></script> 
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets/js/blog.js' %}"></script>
+
+
+

@@ -1,0 +1,76 @@
+{% load widget_tweaks %}
+{% load static %}
+<title>Create Post</title>
+
+
+
+<style type="text/css">
+    .create-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .submit-button {
+        max-width: 200px;
+    }
+</style>
+
+<head>
+        <!-- Theme CSS -->  
+        <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-1.css' %}">
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 offset-lg-1">
+            <form class="create-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- title -->
+                <div class="form-group">
+                    <label for="id_title">Title</label>
+                    <input class="form-control" type="text" name="title" id="id_title" placeholder="Title" required
+                        autofocus>
+                </div>
+
+                <!--Category-->
+                <div class="form-group">
+                    <label for="id_title">Category</label>
+                    {% render_field form.category class="form-control" placeholder="Select Category" %}
+                </div>
+
+                <!--Header Image-->
+                <div class="form-group">
+                    <label for="id_title">Header Image</label>
+                    {% render_field form.header_image class="form-control" placeholder="Header Image" %}
+                </div>
+
+                <!--Video-->
+                <div class="form-group">
+                    <label for="id_title">Video</label>
+                    {% render_field form.video class="form-control" placeholder="Video" %}
+                </div>
+                
+
+                <!-- Body -->
+                <div class="form-group">
+                    <label for="id_body">Content</label>
+                    {% render_field form.body class="form-control" placeholder="This post is about..." %}
+                    {{form.media}}
+                </div>
+
+                <!-- Submit btn -->
+                <div class="d-flex justify-content-center"><button class="submit-button btn btn-lg btn-outline-primary btn-block" type="submit">POST IT</button></div>
+            </form>
+
+            
+        </div>
+    </div>
+</div>
+
+    <!-- Javascript -->          
+	<script src="{% static 'assets/plugins/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/popper.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
